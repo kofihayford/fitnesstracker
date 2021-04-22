@@ -5,14 +5,16 @@ const logger = require("morgan");
 
 // Assign port 
 const PORT = process.env.PORT || 3000;
-
+const htmlRoutes = require("./routes/htmlroutes")
+const workRouter = require("./routes/apiroutes")
 const app = express();
 
 app.use(express.json());
 app.use(express.static("public"));
 app.use(logger("dev"));
-app.use(express.urlencoded({ extended: true }))
-
+app.use(express.urlencoded({ extended: true }));
+app.use("/", htmlRoutes)
+app.use("/api", workRouter)
 
 mongoose.connect(
     process.env.MONGODB_URI || 'mongodb://localhost/workoutdatabase',
