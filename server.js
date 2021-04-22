@@ -1,6 +1,6 @@
 //Declare the basic required variables 
 const express = require("express");
-const mongoose = requre("mongoose");
+const mongoose = require("mongoose");
 const logger = require("morgan");
 
 // Assign port 
@@ -22,4 +22,10 @@ mongoose.connect(
         useFindAndModify: false,
         useCreateIndex: true
     }
-);
+).then(function () {
+    console.log(`connected to server`)
+});
+
+app.listen(PORT, function () {
+    console.log(`listening on port: ${PORT}`)
+})
