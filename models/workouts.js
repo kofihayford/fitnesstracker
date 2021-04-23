@@ -4,7 +4,7 @@ const { Schema } = require("mongoose");
 
 const workoutSchema = new Schema({
     day: { type: String },
-    exercise: []
+    exercises: []
 })
 
 module.exports = mongoose.model('Workouts', workoutSchema)
